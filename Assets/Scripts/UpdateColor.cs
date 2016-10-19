@@ -6,11 +6,17 @@ public class UpdateColor : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		car = GetComponent<Transform> ();
-		UpdateChildColor (car, Color.red);
+//		UpdateChildColor (car, Color.red);
 	}
 
 	void Update () {
 	
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		GameObject go = collision.gameObject;
+		Renderer renderer = go.GetComponent<Renderer>();
+		UpdateChildColor (car, renderer.material.color);
 	}
 
 	void UpdateChildColor (Transform parentTransform, Color newColor) {

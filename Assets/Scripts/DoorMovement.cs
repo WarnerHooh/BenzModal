@@ -11,13 +11,24 @@ public class DoorMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		print (animator.GetCurrentAnimatorStateInfo(0).IsName("LeftDoorMoveDown"));
+//		print (animator.GetCurrentAnimatorStateInfo(0).IsName("RightDoorKeepDown"));
 		if (Input.GetKeyDown ("1")) {
-			animator.Play ("LeftDoorMoveUp");
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("LeftDoorKeepDown")) {
+				animator.Play ("LeftDoorMoveUp");
+			}
+
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("RightDoorKeepDown")) {
+				animator.Play ("RightDoorMoveUp");
+			}
 		}
 
 		if (Input.GetKeyDown ("2")) {
-			animator.Play ("LeftDoorMoveDown");
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("LeftDoorKeepUp")) {
+				animator.Play ("LeftDoorMoveDown");
+			}
+			if (animator.GetCurrentAnimatorStateInfo (0).IsName ("RightDoorKeepUp")) {
+				animator.Play ("RightDoorMoveDown");
+			}
 		}
 	}
 }
